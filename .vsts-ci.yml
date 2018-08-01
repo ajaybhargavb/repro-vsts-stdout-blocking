@@ -2,4 +2,5 @@ queue:
   name: Hosted Linux Preview
   timeoutInMinutes: 3
 steps:
-- script: dotnet test App.Tests1/App.Tests1.csproj
+- script: dotnet build App.Tests1/App.Tests1.csproj
+- script: dotnet vstest App.Tests1/bin/Debug/netcoreapp2.1/App.Tests1.dll
