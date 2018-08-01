@@ -48,6 +48,7 @@ namespace App.Tests1
                 };
 
                 await shutdown.OnExecute();
+                await Task.Delay(1000);
                 Assert.False(File.Exists(pidFile), "server pid should not exist");
                 if (File.Exists(logFile))
                 {
