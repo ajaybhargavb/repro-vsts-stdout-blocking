@@ -47,9 +47,9 @@ namespace BackgroundApp1
                     {
                         FileName = Process.GetCurrentProcess().MainModule.FileName,
                         Arguments = ArgumentEscaper.EscapeAndConcatenate(args),
-                        RedirectStandardInput = true,
+                        /*RedirectStandardInput = true,
                         RedirectStandardError = true,
-                        RedirectStandardOutput = true,
+                        RedirectStandardOutput = true,*/
                         WorkingDirectory = CurrentDirectory,
                         CreateNoWindow = true,
                         UseShellExecute = false,
