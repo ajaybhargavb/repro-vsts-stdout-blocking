@@ -1,0 +1,8 @@
+queue:
+  name: Hosted Linux Preview
+  timeoutInMinutes: 3
+steps:
+- task: DotNetCoreCLI@2
+  displayName: dotnet test
+  inputs:
+    command: test App.Tests1/App.Tests1.csproj
