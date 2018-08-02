@@ -1,20 +1,13 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 using Xunit;
-using Xunit.Abstractions;
 
 namespace App.Tests1
 {
     public class UnitTest1
     {
-        private readonly ITestOutputHelper _outputHelper;
-
-        public UnitTest1(ITestOutputHelper outputHelper)
-        {
-            _outputHelper = outputHelper;
-        }
-
         [Fact]
         public void StartBackgroundProcess()
         {
@@ -32,12 +25,13 @@ namespace App.Tests1
             var process = Process.Start(new ProcessStartInfo
             {
                 FileName = "dotnet",
-                Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj",
+                Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj --no-build",
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 WorkingDirectory = dir.FullName,
             });
-            _outputHelper.WriteLine("Started PID = " + process.Id);
+            Console.WriteLine("Started PID = " + process.Id);
+            Thread.Sleep(TimeSpan.FromSeconds(2)); // wait a little for dotnet-run to at least start the background process
         }
     }
 }
