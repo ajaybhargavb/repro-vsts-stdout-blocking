@@ -22,9 +22,10 @@ namespace App.Tests1
                 dir = dir.Parent;
             }
             
-            var process = Process.Start(new ProcessStartInfo
+            var dotnetPath = Environment.GetEnvironmentVariable("DOTNET_HOST_PATH") ?? "dotnet";
+            var startInfo = new ProcessStartInfo
             {
-                FileName = "dotnet",
+                FileName = dotnetPath,
                 Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj --no-build",
                 UseShellExecute = false,
                 // RedirectStandardInput = true,
@@ -32,7 +33,9 @@ namespace App.Tests1
                 // RedirectStandardError = true,
                 CreateNoWindow = true,
                 WorkingDirectory = dir.FullName,
-            });
+            };
+            var process = Process.Start(startInfo);
+            
             Console.WriteLine("Started PID = " + process.Id);
             //Thread.Sleep(TimeSpan.FromSeconds(2)); // wait a little for dotnet-run to at least start the background process
 

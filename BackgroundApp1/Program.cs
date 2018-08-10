@@ -11,9 +11,10 @@ namespace BackgroundApp1
         {
             //Console.WriteLine($"Hello, I'm PID {Process.GetCurrentProcess().Id} and I'm going to run in the background for 30 minutes or so");
             //Thread.Sleep(TimeSpan.FromMinutes(30));
-            var process = Process.Start(new ProcessStartInfo
+            var dotnetPath = Environment.GetEnvironmentVariable("DOTNET_HOST_PATH") ?? "dotnet";
+            var startInfo = new ProcessStartInfo
             {
-                FileName = "dotnet",
+                FileName = dotnetPath,
                 Arguments = "--version",
                 // RedirectStandardInput = true,
                 // RedirectStandardOutput = true,
@@ -21,7 +22,8 @@ namespace BackgroundApp1
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 WorkingDirectory = Directory.GetCurrentDirectory(),
-            });
+            };
+            var process = Process.Start(startInfo);
 
             if (process.WaitForExit(60000))
             {
