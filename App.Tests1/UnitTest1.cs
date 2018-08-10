@@ -27,14 +27,20 @@ namespace App.Tests1
                 FileName = "dotnet",
                 Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj --no-build",
                 UseShellExecute = false,
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
                 CreateNoWindow = true,
                 WorkingDirectory = dir.FullName,
             });
             Console.WriteLine("Started PID = " + process.Id);
             Thread.Sleep(TimeSpan.FromSeconds(2)); // wait a little for dotnet-run to at least start the background process
+
+            if (process.WaitForExit(60000))
+            {
+                Console.WriteLine($"Outer process {process.Id} exited cleanly");
+            }
+            else
+            {
+                Console.WriteLine($"Outer process {process.Id} is still running");
+            }
         }
     }
 }
