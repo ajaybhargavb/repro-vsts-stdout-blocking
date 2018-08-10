@@ -15,7 +15,7 @@ namespace BackgroundApp1
             var startInfo = new ProcessStartInfo
             {
                 FileName = dotnetPath,
-                Arguments = "--info",
+                Arguments = "--version",
                 // RedirectStandardInput = true,
                 // RedirectStandardOutput = true,
                 // RedirectStandardError = true,

@@ -26,7 +26,7 @@ namespace App.Tests1
             var startInfo = new ProcessStartInfo
             {
                 FileName = dotnetPath,
-                Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj --no-build",
+                Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj",
                 UseShellExecute = false,
                 // RedirectStandardInput = true,
                 // RedirectStandardOutput = true,
