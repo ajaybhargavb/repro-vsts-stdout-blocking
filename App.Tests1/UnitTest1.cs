@@ -27,6 +27,9 @@ namespace App.Tests1
                 FileName = "dotnet",
                 Arguments = "run -p BackgroundApp1/BackgroundApp1.csproj --no-build",
                 UseShellExecute = false,
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
                 CreateNoWindow = true,
                 WorkingDirectory = dir.FullName,
             });
