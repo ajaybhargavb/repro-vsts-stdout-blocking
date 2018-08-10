@@ -4,6 +4,16 @@ phases:
     name: Hosted Linux Preview
     timeoutInMinutes: 5
   steps:
+  - script: curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --shared-runtime --install-dir /usr/share/dotnet/ --version 2.2.0-preview1-26618-02
+  # - task: DotNetCoreInstaller@0
+  #   inputs:
+  #     packageType: 'sdk'
+  #     version: 2.1.302
+  # - task: DotNetCoreInstaller@0
+  #   inputs:
+  #     packageType: 'runtime'
+  #     version: 2.2.0-preview1-26618-02
+  - script: dotnet --info
   - script: dotnet build
   - script: dotnet vstest App.Tests1/bin/Debug/netcoreapp2.2/App.Tests1.dll
     timeoutInMinutes: 2
