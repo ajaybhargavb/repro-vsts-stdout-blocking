@@ -15,6 +15,9 @@ namespace BackgroundApp1
             {
                 FileName = "dotnet",
                 Arguments = "--version",
+                // RedirectStandardInput = true,
+                // RedirectStandardOutput = true,
+                // RedirectStandardError = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
                 WorkingDirectory = Directory.GetCurrentDirectory(),
