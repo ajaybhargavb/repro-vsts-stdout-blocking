@@ -6,3 +6,7 @@ phases:
   steps:
   - script: dotnet build
   - script: dotnet vstest App.Tests1/bin/Debug/netcoreapp2.1/App.Tests1.dll
+    timeoutInMinutes: 2
+  - script: "ps -ef"
+    condition: always()
+    displayName: List processes
