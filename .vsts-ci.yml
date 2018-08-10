@@ -2,15 +2,7 @@ phases:
 - phase: Linux
   queue:
     name: Hosted Linux Preview
-    timeoutInMinutes: 3
-  steps:
-  - script: dotnet build
-  - script: dotnet vstest App.Tests1/bin/Debug/netcoreapp2.1/App.Tests1.dll
-  
-- phase: Windows
-  queue:
-    name: Hosted VS2017
-    timeoutInMinutes: 6
+    timeoutInMinutes: 5
   steps:
   - script: dotnet build
   - script: dotnet vstest App.Tests1/bin/Debug/netcoreapp2.1/App.Tests1.dll
